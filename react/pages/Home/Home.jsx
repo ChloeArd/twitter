@@ -3,6 +3,7 @@ import "./Home.css";
 import {useEffect, useState} from "react";
 import {Search} from "../../components/Search/Search";
 import {TweetItem} from "../../components/TweetItem/TweetItem";
+import {Disconnection} from "../../components/Disconnection/Disconnection";
 
 export const Home = function () {
 
@@ -22,6 +23,7 @@ export const Home = function () {
             <TweetItem/>
             <TweetItem/>
             <TweetItem/>
+            <Disconnection />
         </main>
     );
 };
