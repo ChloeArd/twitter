@@ -9,6 +9,10 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
 }
 
+.header-pc {
+    width: 100%;
+}
+
 #logoTwitter {
     color: #0d6efd;
     font-size: 30px;
@@ -49,4 +53,93 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
     display: none;
     flex-direction: column;
+}
+
+.header-mobile {
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.pad-0-15 {
+    padding: 0 15px;
+}
+
+.pad-15 > p {
+    margin: 0;
+}
+
+h3 {
+    margin: 50px 0;
+}
+
+#close {
+    position: absolute;
+    left: 85%;
+    margin-top: 58px;
+}
+
+.subscribe {
+    padding: 20px 0;
+}
+
+.subscribe > p {
+    font-size: 20px;
+    margin: 8px 0;
+}
+
+.name {
+    font-size: 25px;
+}
+
+@media screen and (max-width: 970px) {
+    .nav-links > a, #sub-nav-links > a {
+        font-size: 18px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .header-pc {
+        display: none;
+    }
+    .header-mobile {
+        display: flex;
+    }
+    .Header {
+        width: 40%;
+        position: absolute;
+        z-index: 3;
+        padding: 0;
+        box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+        background-color: white;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: normal;
+    }
+    .nav-links > a {
+        margin: 10px 0;
+        color: black;
+        font-size: 25px;
+    }
+    .nav-links > a > svg {
+        color: #0d6efd;
+    }
+    .header-mobile > p {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .Header {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .Header {
+        width: 80%;
+    }
 }

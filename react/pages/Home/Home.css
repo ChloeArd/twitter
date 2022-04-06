@@ -20,6 +20,10 @@ main {
   flex-direction: column;
 }
 
+.justify {
+  display: flex;
+  justify-content: center;
+}
 
 .titlePage {
   color: #0d6efd;

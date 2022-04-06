@@ -7,7 +7,7 @@ export const Disconnection = function () {
 
     return(
         <div className="Disconnection flexRow align">
-            <div className="image-user-session">a</div>
+            <div className="image-user-session align justify">User</div>
             <div className="flexColumn pad-10-20">
                 <p>Name</p>
                 <p className="pseudo-2">@pseudo</p>

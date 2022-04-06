@@ -23,3 +23,9 @@ p {
 .pad-10-20 {
     padding:  10px 20px;
 }
+
+@media screen and (max-width: 740px) {
+    .Disconnection {
+        display: none;
+    }
+}

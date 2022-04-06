@@ -1,7 +1,7 @@
 import "./TweetItem.css";
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEllipsisH, faSync} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsisH, faRetweet} from '@fortawesome/free-solid-svg-icons';
 import {faComment, faHeart, faShareSquare} from '@fortawesome/free-regular-svg-icons';
 
 
@@ -10,7 +10,7 @@ export const TweetItem = function () {
     return(
         <div className="TweetItem flexRow">
             <div className="tweet-left">
-                <div className="image-user">a</div>
+                <div className="image-user align justify">User</div>
             </div>
             <div className="tweet-right">
                 <div className="flexRow align">
@@ -24,7 +24,7 @@ export const TweetItem = function () {
                 </p>
                 <div className="container-icon">
                     <FontAwesomeIcon className="grey" icon={faComment} />
-                    <FontAwesomeIcon className="grey" icon={faSync} />
+                    <FontAwesomeIcon className="grey" icon={faRetweet} />
                     <FontAwesomeIcon className="grey" icon={faHeart} />
                     <FontAwesomeIcon className="grey" icon={faShareSquare} />
                 </div>
