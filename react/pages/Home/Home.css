@@ -1,0 +1,35 @@
+main {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f1f2f3;
+  border-top: none;
+  border-bottom: none;
+
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.titlePage {
+  color: #0d6efd;
+  margin: 0 30px;
+}
+
+.button {
+  border: none;
+  width: 15%;
+  margin: 30px;
+  padding: 10px;
+  border-radius: 20px;
+}
