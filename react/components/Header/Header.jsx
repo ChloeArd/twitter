@@ -4,7 +4,7 @@ import {NavLink, Outlet} from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons'
-import {faCog, faPaintBrush, faTimes, faUser, faBookmark, faListUl} from "@fortawesome/free-solid-svg-icons";
+import {faCog, faPaintBrush, faTimes, faUser, faBookmark, faListUl, faHome, faComment} from "@fortawesome/free-solid-svg-icons";
 
 export const Header = function () {
 
@@ -63,6 +63,9 @@ export const Header = function () {
                 </div>
 
                 <div className="nav-links">
+                    <NavLink to="/"><FontAwesomeIcon className="icon" icon={faHome}/>Accueil</NavLink>
+                    <NavLink to="/2"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
+                    <NavLink to="/3"><FontAwesomeIcon className="icon" icon={faComment}/>Messages</NavLink>
                     <NavLink to="/6"><FontAwesomeIcon className="icon" icon={faUser}/>Profil</NavLink>
                     <NavLink to="/4"><FontAwesomeIcon className="icon" icon={faBookmark}/>Signets</NavLink>
                     <NavLink to="/5"><FontAwesomeIcon className="icon" icon={faListUl}/>Listes</NavLink>
