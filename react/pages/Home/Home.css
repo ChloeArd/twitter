@@ -37,3 +37,16 @@ main {
   padding: 10px;
   border-radius: 20px;
 }
+
+#displayMenu {
+  display: none;
+}
+
+@media screen and (max-width: 740px) {
+  #displayMenu {
+    display: block;
+  }
+  #home-top {
+    flex-direction: column;
+  }
+}

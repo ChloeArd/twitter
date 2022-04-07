@@ -105,7 +105,7 @@ h3 {
         display: none;
     }
     .header-mobile {
-        display: flex;
+        display: none;
     }
     .Header {
         width: 50%;

@@ -13,11 +13,20 @@ export const Home = function () {
         document.title = page;
     }, []);
 
+    // display a header
+    function displayHeader() {
+        document.getElementById("header-mobile").style.display = "flex";
+    }
+
     return (
         <main className="Home">
-            <div className="flexRow align">
-                <h1 className="titlePage">{page}</h1>
-                <Search/>
+            <div id="home-top" className="flexRow align">
+                <div className="flexRow">
+                    <div id="displayMenu" onClick={displayHeader} className="image-user align justify">User</div>
+                    <h1 className="titlePage">{page}</h1>
+                </div>
+
+                <Search />
             </div>
             <button id="addTweet" className="buttonBlue button">Tweeter</button>
             <TweetItem/>
