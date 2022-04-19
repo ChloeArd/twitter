@@ -7,7 +7,6 @@ main {
   border: 1px solid #f1f2f3;
   border-top: none;
   border-bottom: none;
-
 }
 
 .flexRow {
@@ -45,6 +44,7 @@ main {
 @media screen and (max-width: 970px) {
   main {
     width: 100%;
+    margin: 0;
   }
 }
 
@@ -55,5 +55,8 @@ main {
   #home-top {
     flex-direction: column;
     align-items: normal;
+  }
+  main {
+    border: none;
   }
 }

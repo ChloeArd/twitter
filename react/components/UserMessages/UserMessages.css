@@ -1,0 +1,9 @@
+
+.UserMessages {
+    margin: 15px;
+    padding: 8px;
+}
+
+.UserMessages:hover {
+    background-color: #f1f2f3;
+}

@@ -12,6 +12,14 @@ export const TweetItem = function () {
         document.getElementById("AddComment").style.display = "block";
     }
 
+    function displayOptionTweet() {
+        document.getElementById("optionTweet").style.display = "block";
+    }
+
+    function displayNoneOptionTweet() {
+        document.getElementById("optionTweet").style.display = "none";
+    }
+
     return(
         <div className="TweetItem flexRow">
             <div className="tweet-left">
@@ -21,7 +29,13 @@ export const TweetItem = function () {
                 <div className="flexRow align">
                     <p>Name</p>
                     <p className="pseudo">@pseudo . le 00/00/0000 à 00h00</p>
-                    <FontAwesomeIcon icon={faEllipsisH} className="grey ellipsis"/>
+                    <FontAwesomeIcon icon={faEllipsisH} onClick={displayOptionTweet} className="grey ellipsis"/>
+                    <div id="optionTweet" className="optionTweet" onMouseLeave={displayNoneOptionTweet}>
+                        <p>Ajouter @pseudo à des Listes/le retirer de Listes</p>
+                        <p>Se désabonner de @pseudo</p>
+                        <p>Bloquer @pseudo</p>
+                        <p>Signaler le tweet</p>
+                    </div>
                 </div>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis,
