@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {Search} from "../../components/Search/Search";
 import {Disconnection} from "../../components/Disconnection/Disconnection";
 import {faCog, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
-import {faPlusSquare} from '@fortawesome/free-regular-svg-icons';
+import {faPlusSquare, faHandPointRight, faImage} from '@fortawesome/free-regular-svg-icons';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {UserMessages} from "../../components/UserMessages/UserMessages";
@@ -20,6 +20,7 @@ export const Messages = function () {
     function displayHeader() {
         document.getElementById("header-mobile").style.display = "flex";
     }
+
 
     return (
         <main className="Messages">
@@ -54,7 +55,16 @@ export const Messages = function () {
                 </div>
             </div>
 
-
+            <div className="scrollBar2">
+                <div id="writeMessage">
+                    <div className="parent-div">
+                        <button className="btn-upload"><FontAwesomeIcon icon={faImage} /></button>
+                        <input type="file" name="file"/>
+                    </div>
+                    <input id="inputMessage" name="message" type="text"/>
+                    <button type="submit" className="buttonSend"><FontAwesomeIcon icon={faHandPointRight} /></button>
+                </div>
+            </div>
             <Disconnection />
         </main>
     );
