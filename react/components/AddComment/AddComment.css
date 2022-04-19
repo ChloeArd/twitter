@@ -1,0 +1,22 @@
+
+.AddComment {
+    display: none;
+    position: fixed;
+    top : 20%;
+    left: 35%;
+}
+
+.contentOfUser {
+    width: 400px;
+    margin: 15px 0;
+}
+
+.blue {
+    color: #0d6efd;
+}
+
+.lineHorizontal {
+    border-bottom: 1px solid #DDDDDD;
+    width: 50%;
+    margin: 30px auto;
+}

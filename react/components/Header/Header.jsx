@@ -35,7 +35,6 @@ export const Header = function () {
                 <FontAwesomeIcon id="logoTwitter" icon={faTwitter}/>
                 <div className="nav-links">
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/">Accueil</NavLink>
-                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/1">Explorer</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/2"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/3">Messages</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/4">Signets</NavLink>
