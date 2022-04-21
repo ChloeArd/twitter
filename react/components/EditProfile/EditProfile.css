@@ -1,0 +1,33 @@
+
+#EditProfile {
+    display: none;
+    z-index: 4;
+    position: fixed;
+    top : 20%;
+    left: 35%;
+}
+
+#EditProfile > .modal {
+    overflow-y: scroll;
+    height: 500px;
+}
+
+#EditProfile > .modal > div > input, #EditProfile > .modal > div > textarea {
+    padding: 5px;
+    border: 1px solid #f1f2f3;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+label {
+    margin: 15px 0;
+}
+
+#EditProfile > .modal > div > button {
+    width: 50%;
+    margin: 15px auto;
+}
+
+h3 {
+    margin: 5px 0;
+}

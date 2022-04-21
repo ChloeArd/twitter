@@ -1,0 +1,8 @@
+
+#addMessage {
+    display: none;
+    z-index: 4;
+    position: fixed;
+    top : 20%;
+    left: 35%;
+}

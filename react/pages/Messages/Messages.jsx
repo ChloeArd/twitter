@@ -8,6 +8,7 @@ import {faPlusSquare, faHandPointRight, faImage} from '@fortawesome/free-regular
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {UserMessages} from "../../components/UserMessages/UserMessages";
+import {AddMessage} from "../../components/AddMessage/AddMessage";
 
 export const Messages = function () {
     const page = "Messages";
@@ -21,6 +22,24 @@ export const Messages = function () {
         document.getElementById("header-mobile").style.display = "flex";
     }
 
+    let a = 1;
+
+    // display a modal info
+    function displayInfo() {
+        if (a === 1) {
+            document.getElementById("info").style.display = "block";
+            a++;
+        }
+        else {
+            document.getElementById("info").style.display = "none";
+            a = 1;
+        }
+    }
+
+    // Display a modal for a new message
+    function displayAddMessage() {
+        document.getElementById("addMessage").style.display = "flex";
+    }
 
     return (
         <main className="Messages">
@@ -31,7 +50,7 @@ export const Messages = function () {
                 </div>
                 <div className="flex-end">
                     <FontAwesomeIcon icon={faCog} className="icon icon2 grey" />
-                    <FontAwesomeIcon icon={faPlusSquare} className="icon icon2 grey" />
+                    <FontAwesomeIcon icon={faPlusSquare} className="icon icon2 grey" onClick={displayAddMessage} />
                 </div>
             </div>
             <div className="width_100">
@@ -51,11 +70,30 @@ export const Messages = function () {
                     <p className="pseudo-2">@pseudo</p>
                 </div>
                 <div className="flex-end">
-                    <FontAwesomeIcon icon={faExclamationCircle} className="icon grey" />
+                    <FontAwesomeIcon icon={faExclamationCircle} className="icon grey" onClick={displayInfo} />
+                    <div id="info">
+                        <p className="blue">Bloquer @pseudo</p>
+                        <p className="blue">Signaler @pseudo</p>
+                        <p className="red">Quitter la conversation</p>
+                    </div>
                 </div>
             </div>
 
             <div className="scrollBar2">
+                <div className="messages-right">
+                    <div>
+                        Lorem ipsum dolor sit amet
+                    </div>
+                    <p>00/00/0000 à 00h00</p>
+                </div>
+
+                <div className="messages-left">
+                    <div>
+                        Lorem ipsum dolor sit amet
+                    </div>
+                    <p>00/00/0000 à 00h00</p>
+                </div>
+
                 <div id="writeMessage">
                     <div className="parent-div">
                         <button className="btn-upload"><FontAwesomeIcon icon={faImage} /></button>
@@ -65,6 +103,7 @@ export const Messages = function () {
                     <button type="submit" className="buttonSend"><FontAwesomeIcon icon={faHandPointRight} /></button>
                 </div>
             </div>
+            <AddMessage />
             <Disconnection />
         </main>
     );

@@ -34,16 +34,16 @@ export const Header = function () {
             <div className="header-pc flexRow align">
                 <FontAwesomeIcon id="logoTwitter" icon={faTwitter}/>
                 <div className="nav-links">
-                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/">Accueil</NavLink>
+                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/home">Accueil</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/2"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/messages">Messages</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/4">Signets</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/5">Listes</NavLink>
-                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/6">Profil</NavLink>
-                    <NavLink to="" id="more" onClick={displaySubNav}>Plus</NavLink>
+                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/profile">Profil</NavLink>
+                    <NavLink to="#" id="more" onClick={displaySubNav}>Plus</NavLink>
                     <div id="sub-nav-links">
-                        <NavLink to=""><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>
-                        <NavLink to=""><FontAwesomeIcon className="icon" icon={faPaintBrush}/>Affichage</NavLink>
+                        <NavLink to="#"><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>
+                        <NavLink to="#"><FontAwesomeIcon className="icon" icon={faPaintBrush}/>Affichage</NavLink>
                     </div>
                 </div>
                 <Outlet />
@@ -62,14 +62,14 @@ export const Header = function () {
                 </div>
 
                 <div className="nav-links">
-                    <NavLink to="/"><FontAwesomeIcon className="icon" icon={faHome}/>Accueil</NavLink>
+                    <NavLink to="/home"><FontAwesomeIcon className="icon" icon={faHome}/>Accueil</NavLink>
                     <NavLink to="/2"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
-                    <NavLink to="/3"><FontAwesomeIcon className="icon" icon={faComment}/>Messages</NavLink>
-                    <NavLink to="/6"><FontAwesomeIcon className="icon" icon={faUser}/>Profil</NavLink>
+                    <NavLink to="/messages"><FontAwesomeIcon className="icon" icon={faComment}/>Messages</NavLink>
+                    <NavLink to="/profile"><FontAwesomeIcon className="icon" icon={faUser}/>Profil</NavLink>
                     <NavLink to="/4"><FontAwesomeIcon className="icon" icon={faBookmark}/>Signets</NavLink>
                     <NavLink to="/5"><FontAwesomeIcon className="icon" icon={faListUl}/>Listes</NavLink>
-                    <NavLink to=""><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>
-                    <NavLink to=""><FontAwesomeIcon className="icon" icon={faPaintBrush}/>Affichage</NavLink>
+                    <NavLink to="#"><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>
+                    <NavLink to="#"><FontAwesomeIcon className="icon" icon={faPaintBrush}/>Affichage</NavLink>
                 </div>
             </div>
         </header>

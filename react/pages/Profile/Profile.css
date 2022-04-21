@@ -1,0 +1,174 @@
+
+.pseudoProfile > h1{
+    margin-left: 0;
+}
+
+.pseudoProfile {
+    margin-left: 10px;
+}
+
+#profile-top {
+    width: 100%;
+    padding: 10px;
+}
+
+.Profile {
+    padding: 0;
+}
+
+#background-user {
+    width: 100%;
+}
+
+#photo-user {
+    border-radius: 50%;
+    width: 10%;
+    position: absolute;
+    background-color: #AAAAAA;
+    border: 5px solid white;
+    top: 50%;
+    left: 22%;
+}
+
+#photo-user > img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+#info-user {
+    padding: 30px;
+    width: 100%;
+}
+
+#editProfile {
+    border: 1px solid #f1f2f3;
+    border-radius: 30px;
+    color: #0d6efd;
+    padding: 10px;
+    background-color: white;
+    font-size: 18px;
+}
+
+#editProfile:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.flex-end2 {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#info-user > h1 {
+    margin-top: 20px;
+}
+
+#description-user {
+    margin: 15px 0;
+}
+
+.pad-right {
+    padding-right: 8px;
+}
+
+.pad-bottom {
+    padding-bottom: 8px;
+}
+
+#tweets-user {
+    width: 100%;
+    border-bottom: 1px solid #f1f2f3;
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#tweets-user > p {
+    width: 25%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+#tweets-user > p:hover {
+    background-color: #DDDDDD;
+}
+
+.justifyContent {
+    display: flex;
+    justify-content: center;
+}
+
+#subscribe > p:hover {
+    text-decoration: underline black;
+}
+
+@media screen and (max-width: 1550px) {
+    #photo-user {
+        top: 45%;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    #photo-user {
+        top: 40%;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    #photo-user {
+        top: 35%;
+    }
+}
+
+@media screen and (max-width: 970px) {
+    #photo-user {
+        top: 50%;
+        left: 3%;
+        width: 15%;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    #photo-user {
+        top: 45%;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    #photo-user {
+        top: 33%;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    #photo-user {
+        top: 30%;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    #photo-user {
+        top: 27%;
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #photo-user {
+        top: 24%;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #photo-user {
+        top: 22%;
+        width: 23%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #photo-user {
+        top: 20%;
+    }
+}

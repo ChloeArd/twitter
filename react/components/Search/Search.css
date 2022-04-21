@@ -29,14 +29,13 @@
     background-color: #f1f2f3;
 }
 
-
 #input-search {
     width: 85%;
 }
 
 .Search {
     width: 100%;
-    padding: 0 100px;
+    padding: 0 10px;
 }
 
 .align {
