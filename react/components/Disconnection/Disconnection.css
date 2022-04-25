@@ -1,14 +1,19 @@
 .image-user-session {
-    background-color: #676767;
+    background-color: #AAAAAA;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 .Disconnection {
     position: fixed;
     bottom: 0;
     left: 7%;
+    font-size: 20px;
+}
+
+.Disconnection > div > p:first-child {
+    font-size: 22px;
 }
 
 p {
@@ -16,7 +21,7 @@ p {
 }
 
 .pseudo-2 {
-    font-size: 12px;
+    font-size: 18px;
     color: #bdbdbd;
 }
 

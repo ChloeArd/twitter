@@ -5,8 +5,11 @@ import {Search} from "../../components/Search/Search";
 import {TweetItem} from "../../components/TweetItem/TweetItem";
 import {Disconnection} from "../../components/Disconnection/Disconnection";
 import {AddTweet} from "../../components/AddTweet/AddTweet";
+import {Header} from "../../components/Header/Header";
 
 export const Home = function () {
+
+    const [sessionGoogle, setSessionGoogle] = useState(JSON.parse(sessionStorage.getItem("infoGoogle")));
 
     const page = "Accueil";
 
@@ -22,22 +25,27 @@ export const Home = function () {
     function displayAddTweet() {
         document.getElementById("AddTweet").style.display = "block";
     }
-
     return (
-        <main className="Home">
-            <div id="home-top" className="flexRow align">
-                <div className="flexRow">
-                    <div id="displayMenu" onClick={displayHeader} className="image-user align justify">User</div>
-                    <h1 className="blue">{page}</h1>
+        <>
+            <Header sessionGoogle={sessionGoogle} />
+            <main className="Home">
+                <div id="home-top" className="flexRow align">
+                    <div className="flexRow">
+                        {sessionGoogle !== [] ? <img id="displayMenu" onClick={displayHeader} className="image-user" src={sessionGoogle.imageUrl} />
+                            :
+                            <img id="displayMenu" onClick={displayHeader}  className="image-user" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png" />
+                        }
+                        <h1 className="blue">{page}</h1>
+                    </div>
+                    <Search />
                 </div>
-                <Search />
-            </div>
-            <button id="addTweet" className="buttonBlue button" onClick={displayAddTweet}>Tweeter</button>
-            <TweetItem />
-            <TweetItem />
-            <TweetItem />
-            <Disconnection />
-            <AddTweet />
-        </main>
+                <button id="addTweet" className="buttonBlue button" onClick={displayAddTweet}>Tweeter</button>
+                <TweetItem />
+                <TweetItem />
+                <TweetItem />
+                <Disconnection sessionGoogle={sessionGoogle}/>
+                <AddTweet />
+            </main>
+        </>
     );
 };

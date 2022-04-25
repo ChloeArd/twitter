@@ -1,6 +1,6 @@
 import "./Messages.css";
 
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {Search} from "../../components/Search/Search";
 import {Disconnection} from "../../components/Disconnection/Disconnection";
 import {faCog, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
@@ -9,9 +9,12 @@ import {faPlusSquare, faHandPointRight, faImage} from '@fortawesome/free-regular
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {UserMessages} from "../../components/UserMessages/UserMessages";
 import {AddMessage} from "../../components/AddMessage/AddMessage";
+import {Header} from "../../components/Header/Header";
 
 export const Messages = function () {
     const page = "Messages";
+
+    const [sessionGoogle, setSessionGoogle] = useState(JSON.parse(sessionStorage.getItem("infoGoogle")));
 
     useEffect(() => {
         document.title = page;
@@ -42,69 +45,76 @@ export const Messages = function () {
     }
 
     return (
-        <main className="Messages">
-            <div id="home-top" className="flexRow align">
-                <div className="flexRow">
-                    <div id="displayMenu" onClick={displayHeader} className="image-user align justify">User</div>
-                    <h1 className="titlePage">{page}</h1>
-                </div>
-                <div className="flex-end">
-                    <FontAwesomeIcon icon={faCog} className="icon icon2 grey" />
-                    <FontAwesomeIcon icon={faPlusSquare} className="icon icon2 grey" onClick={displayAddMessage} />
-                </div>
-            </div>
-            <div className="width_100">
-                <Search />
-            </div>
-
-            <div className="scrollBar">
-                <UserMessages />
-                <UserMessages />
-                <UserMessages />
-                <UserMessages />
-            </div>
-            <div id="nameUserMessages" className="flexRow align">
-                <div className="image-user-session align justify">User</div>
-                <div className="flexColumn pad-10-20">
-                    <p>Name</p>
-                    <p className="pseudo-2">@pseudo</p>
-                </div>
-                <div className="flex-end">
-                    <FontAwesomeIcon icon={faExclamationCircle} className="icon grey" onClick={displayInfo} />
-                    <div id="info">
-                        <p className="blue">Bloquer @pseudo</p>
-                        <p className="blue">Signaler @pseudo</p>
-                        <p className="red">Quitter la conversation</p>
+        <>
+            <Header sessionGoogle={sessionGoogle} />
+            <main className="Messages">
+                <div id="home-top" className="flexRow align">
+                    <div className="flexRow">
+                        {sessionGoogle !== [] ? <img id="displayMenu" onClick={displayHeader} className="image-user" src={sessionGoogle.imageUrl} />
+                            :
+                            <img id="displayMenu" onClick={displayHeader}  className="image-user" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png" />
+                        }
+                        <h1 className="titlePage">{page}</h1>
+                    </div>
+                    <div className="flex-end">
+                        <FontAwesomeIcon icon={faCog} className="icon icon2 grey" />
+                        <FontAwesomeIcon icon={faPlusSquare} className="icon icon2 grey" onClick={displayAddMessage} />
                     </div>
                 </div>
-            </div>
-
-            <div className="scrollBar2">
-                <div className="messages-right">
-                    <div>
-                        Lorem ipsum dolor sit amet
-                    </div>
-                    <p>00/00/0000 à 00h00</p>
+                <div className="width_100">
+                    <Search />
                 </div>
 
-                <div className="messages-left">
-                    <div>
-                        Lorem ipsum dolor sit amet
+                <div className="scrollBar">
+                    <UserMessages />
+                    <UserMessages />
+                    <UserMessages />
+                    <UserMessages />
+                </div>
+                <div id="nameUserMessages" className="flexRow align">
+                    <div className="image-user-session align justify">User</div>
+                    <div className="flexColumn pad-10-20">
+                        <p>Name</p>
+                        <p className="pseudo-2">@pseudo</p>
                     </div>
-                    <p>00/00/0000 à 00h00</p>
+                    <div className="flex-end">
+                        <FontAwesomeIcon icon={faExclamationCircle} className="icon grey" onClick={displayInfo} />
+                        <div id="info">
+                            <p className="blue">Bloquer @pseudo</p>
+                            <p className="blue">Signaler @pseudo</p>
+                            <p className="red">Quitter la conversation</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="writeMessage">
-                    <div className="parent-div">
-                        <button className="btn-upload"><FontAwesomeIcon icon={faImage} /></button>
-                        <input type="file" name="file"/>
+                <div className="scrollBar2">
+                    <div className="messages-right">
+                        <div>
+                            Lorem ipsum dolor sit amet
+                        </div>
+                        <p>00/00/0000 à 00h00</p>
                     </div>
-                    <input id="inputMessage" name="message" type="text"/>
-                    <button type="submit" className="buttonSend"><FontAwesomeIcon icon={faHandPointRight} /></button>
+
+                    <div className="messages-left">
+                        <div>
+                            Lorem ipsum dolor sit amet
+                        </div>
+                        <p>00/00/0000 à 00h00</p>
+                    </div>
+
+                    <div id="writeMessage">
+                        <div className="parent-div">
+                            <button className="btn-upload"><FontAwesomeIcon icon={faImage} /></button>
+                            <input type="file" name="file"/>
+                        </div>
+                        <input id="inputMessage" name="message" type="text"/>
+                        <button type="submit" className="buttonSend"><FontAwesomeIcon icon={faHandPointRight} /></button>
+                    </div>
                 </div>
-            </div>
-            <AddMessage />
-            <Disconnection />
-        </main>
+                <AddMessage />
+                <Disconnection sessionGoogle={sessionGoogle} />
+            </main>
+        </>
+
     );
 }

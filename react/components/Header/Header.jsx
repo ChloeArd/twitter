@@ -6,23 +6,7 @@ import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons'
 import {faCog, faPaintBrush, faTimes, faUser, faBookmark, faListUl, faHome, faComment} from "@fortawesome/free-solid-svg-icons";
 
-export const Header = function () {
-
-    let a = 1;
-
-    // Display a sub nav
-    function displaySubNav() {
-        if (a === 1) {
-            document.getElementById("sub-nav-links").style.display = "flex";
-            document.getElementById("more").style.fontWeight = "bold";
-            a++;
-        }
-        else if(a !== 1) {
-            document.getElementById("sub-nav-links").style.display = "none";
-            document.getElementById("more").style.fontWeight = "normal";
-            a--;
-        }
-    }
+export const Header = function ({sessionGoogle}) {
 
     // close a header
     function closeHeader() {
@@ -37,14 +21,10 @@ export const Header = function () {
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/home">Accueil</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/2"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/messages">Messages</NavLink>
-                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/4">Signets</NavLink>
-                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/5">Listes</NavLink>
+                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/bookMarks">Signets</NavLink>
+                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/Lists">Listes</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/profile">Profil</NavLink>
-                    <NavLink to="#" id="more" onClick={displaySubNav}>Plus</NavLink>
-                    <div id="sub-nav-links">
-                        <NavLink to="#"><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>
-                        <NavLink to="#"><FontAwesomeIcon className="icon" icon={faPaintBrush}/>Affichage</NavLink>
-                    </div>
+                    <NavLink to="/parameters"><FontAwesomeIcon className="icon" icon={faCog}/></NavLink>
                 </div>
                 <Outlet />
             </div>
@@ -52,8 +32,11 @@ export const Header = function () {
                 <h3>Information du compte</h3>
                 <FontAwesomeIcon id="close" className="icon grey" icon={faTimes} onClick={closeHeader}/>
                 <div className="pad-0-15">
-                    <div className="image-user align justify">User</div>
-                    <p className="name">Name</p>
+                    {sessionGoogle !== [] ? <img className="image-user" src={sessionGoogle.imageUrl} /> :
+                        <img className="image-user align justify" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png" />
+                    }
+
+                    <p className="name">{sessionGoogle.name}</p>
                 </div>
                 <p className="pad-0-15 grey">@pseudo</p>
                 <div className="subscribe">
@@ -66,10 +49,9 @@ export const Header = function () {
                     <NavLink to="/2"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
                     <NavLink to="/messages"><FontAwesomeIcon className="icon" icon={faComment}/>Messages</NavLink>
                     <NavLink to="/profile"><FontAwesomeIcon className="icon" icon={faUser}/>Profil</NavLink>
-                    <NavLink to="/4"><FontAwesomeIcon className="icon" icon={faBookmark}/>Signets</NavLink>
-                    <NavLink to="/5"><FontAwesomeIcon className="icon" icon={faListUl}/>Listes</NavLink>
-                    <NavLink to="#"><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>
-                    <NavLink to="#"><FontAwesomeIcon className="icon" icon={faPaintBrush}/>Affichage</NavLink>
+                    <NavLink to="/bookMarks"><FontAwesomeIcon className="icon" icon={faBookmark}/>Signets</NavLink>
+                    <NavLink to="/lists"><FontAwesomeIcon className="icon" icon={faListUl}/>Listes</NavLink>
+                    <NavLink to="/parameters"><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>
                 </div>
             </div>
         </header>

@@ -32,6 +32,7 @@ export const TweetItem = function () {
                     <FontAwesomeIcon icon={faEllipsisH} onClick={displayOptionTweet} className="grey ellipsis"/>
                     <div id="optionTweet" className="optionTweet" onMouseLeave={displayNoneOptionTweet}>
                         <p>Ajouter @pseudo à des Listes/le retirer de Listes</p>
+                        <p>Enregistrer le tweet dans les Signets</p>
                         <p>Se désabonner de @pseudo</p>
                         <p>Bloquer @pseudo</p>
                         <p>Signaler le tweet</p>

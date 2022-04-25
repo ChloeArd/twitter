@@ -1,0 +1,33 @@
+
+#AddList {
+    display: none;
+    z-index: 4;
+    position: fixed;
+    top : 20%;
+    left: 35%;
+}
+
+#AddList > .modal {
+    overflow-y: scroll;
+    height: 500px;
+}
+
+#AddList > .modal > div > input, #AddList > .modal > div > textarea {
+    padding: 5px;
+    border: 1px solid #f1f2f3;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+label {
+    margin: 15px 0;
+}
+
+#AddList > .modal > div > button {
+    width: 50%;
+    margin: 15px auto;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}

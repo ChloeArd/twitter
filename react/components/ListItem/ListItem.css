@@ -1,0 +1,29 @@
+
+.ListItem {
+    border: 1px solid #f1f2f3;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.pictureList {
+    width: 10%;
+}
+
+.pictureList > img {
+    width: 60%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.infoList {
+    width: 90%;
+}
+
+.image-user-list {
+    border-radius: 50%;
+    width: 30px;
+}
+
+.infoList > div > p {
+    margin: 0 8px;
+}

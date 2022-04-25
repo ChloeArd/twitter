@@ -19,7 +19,7 @@
     margin: 0 30px;
 }
 
-.nav-links > a, #sub-nav-links > a {
+.nav-links > a {
     margin-right: 10px;
     margin-left: 10px;
     text-decoration: none;
@@ -29,7 +29,7 @@
     border-radius: 25px;
 }
 
-.nav-links > a:hover, #sub-nav-links > a:hover {
+.nav-links > a:hover {
     background-color: rgba(169, 169, 169, 0.3);
 }
 
@@ -43,16 +43,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: right;
-}
-
-#sub-nav-links {
-    padding: 15px;
-    position: absolute;
-    top: 82px;
-    right: 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-    display: none;
-    flex-direction: column;
 }
 
 .header-mobile {
