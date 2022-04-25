@@ -1,0 +1,33 @@
+
+#rightParameters > h2 {
+    margin: 20px 0;
+}
+
+#rightParameters > input[type="submit"].buttonSend {
+    color: #e81717;
+}
+
+#rightParameters > input[type="submit"].buttonSend:hover {
+    color: white;
+    background-color: #e81717;
+}
+
+#buttonBlack, #buttonWhite {
+    background-color: #1a1a1a;
+    color: white;
+    border: 3px solid #1a1a1a;
+    padding: 20px;
+    width: 30%;
+    font-size: 20px;
+    margin: 20px auto;
+}
+
+#buttonBlack:hover, #buttonWhite:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#buttonWhite {
+    background-color: white;
+    color: #0d6efd;
+    border: 3px solid #0d6efd;
+}

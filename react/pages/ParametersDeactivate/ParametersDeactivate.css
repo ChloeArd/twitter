@@ -2,3 +2,12 @@
 #rightParameters > h2 {
     margin: 20px 0;
 }
+
+#rightParameters > input[type="submit"].buttonSend {
+    color: #e81717;
+}
+
+#rightParameters > input[type="submit"].buttonSend:hover {
+    color: white;
+    background-color: #e81717;
+}

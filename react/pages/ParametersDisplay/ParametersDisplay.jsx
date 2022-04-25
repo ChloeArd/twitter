@@ -1,4 +1,4 @@
-import "./ParametersPassword.css";
+import "./ParametersDisplay.css";
 import {Header} from "../../components/Header/Header";
 import {Disconnection} from "../../components/Disconnection/Disconnection";
 import {useState} from "react";
@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleRight, faArrowLeft, faKey, faPaintBrush, faUserXmark} from "@fortawesome/free-solid-svg-icons";
 
-export const ParametersPassword = function () {
+export const ParametersDisplay = function () {
 
     const [sessionGoogle, setSessionGoogle] = useState(JSON.parse(sessionStorage.getItem("infoGoogle")));
     const page = "Paramètres";
@@ -14,7 +14,7 @@ export const ParametersPassword = function () {
     return(
         <>
             <Header sessionGoogle={sessionGoogle}/>
-            <main className="ParametersPassword">
+            <main className="ParametersDisplay">
                 <div id="profile-top" className="flexRow align">
                     <NavLink to="/home"><FontAwesomeIcon icon={faArrowLeft} className="grey icon" /></NavLink>
                     <div className="flexColumn pseudoProfile">
@@ -28,11 +28,10 @@ export const ParametersPassword = function () {
                         <NavLink to="/parameters/display" style={({isActive}) => {return {backgroundColor: isActive ? "#f1f2f3" : "transparent"};}}><FontAwesomeIcon className="icon blue" icon={faPaintBrush}/>Affichage <FontAwesomeIcon className="icon angleRight" icon={faAngleRight}/></NavLink>
                     </div>
                     <div id="rightParameters" className="flexColumn justify">
-                        <h1>Changez de mot de passe</h1>
-                        <input type="password" placeholder="Mot de passe actuel"/>
-                        <input type="password" placeholder="Nouveau mot de passe"/>
-                        <input type="password" placeholder="Confirmer le mot de passe"/>
-                        <input type="submit" className="button buttonBlue" value="Enregistrer"/>
+                        <h1>Affichage</h1>
+                        <p className="grey">Gérer le thème du compte.</p>
+                        <button id="buttonBlack">Mode sombre</button>
+                        <button id="buttonWhite">Mode claire</button>
                     </div>
                 </div>
 

@@ -9,6 +9,7 @@ import {List} from "./pages/List/List";
 import {BookMark} from "./pages/BookMark/BookMark";
 import {ParametersPassword} from "./pages/ParametersPassword/ParametersPassword";
 import {ParametersDeactivate} from "./pages/ParametersDeactivate/ParametersDeactivate";
+import {ParametersDisplay} from "./pages/ParametersDisplay/ParametersDisplay";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -21,6 +22,8 @@ ReactDOM.render(
             <Route path="/bookMarks" element={<BookMark/>}/>
             <Route path="/parameters/password" element={<ParametersPassword/>}/>
             <Route path="/parameters/deactivate" element={<ParametersDeactivate/>}/>
+            <Route path="/parameters/deactivate" element={<ParametersDeactivate/>}/>
+            <Route path="/parameters/display" element={<ParametersDisplay/>}/>
             <Route path="*" element={<RouteNotFound/>}/>
         </Routes>
     </BrowserRouter>,
