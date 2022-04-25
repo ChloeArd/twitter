@@ -24,6 +24,10 @@ export const EditProfile = function ({sessionGoogle}) {
                     <input type="file"/>
                     <label>Nom</label>
                     <input type="text" value={sessionGoogle.name}/>
+                    <label>Email</label>
+                    <input type="email" value={sessionGoogle.email}/>
+                    <label>Téléphone</label>
+                    <input type="tel"/>
                     <label>Biographie</label>
                     <textarea></textarea>
                     <label>Localisation</label>
