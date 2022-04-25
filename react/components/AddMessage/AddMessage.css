@@ -5,4 +5,9 @@
     position: fixed;
     top : 20%;
     left: 35%;
+    width: 50%;
+}
+
+#addMessage > .modal {
+    width: 50%;
 }

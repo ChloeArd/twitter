@@ -18,6 +18,7 @@ export const AddMessage = function () {
                 <div className="addContent">
                     <h3>Nouveau message</h3>
                     <Search />
+                    <textarea></textarea>
                 </div>
             </div>
         </div>

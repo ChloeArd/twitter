@@ -30,8 +30,9 @@
     position: fixed;
     bottom: 0;
     width: 60%;
-    height: 60%;
+    height: 68%;
     border-left: 1px solid #f1f2f3;
+    border-right: 1px solid #f1f2f3;
 }
 
 .parent-div {
