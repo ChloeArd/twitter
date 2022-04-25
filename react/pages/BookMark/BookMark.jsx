@@ -3,9 +3,6 @@ import {Header} from "../../components/Header/Header";
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faEllipsisH} from "@fortawesome/free-solid-svg-icons";
-import {faPlusSquare} from "@fortawesome/free-regular-svg-icons";
-import {ListItem} from "../../components/ListItem/ListItem";
-import {AddList} from "../../components/AddList/AddList";
 import {Disconnection} from "../../components/Disconnection/Disconnection";
 import {useState} from "react";
 

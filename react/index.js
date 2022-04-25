@@ -5,10 +5,10 @@ import {RouteNotFound} from "./components/RouteNotFound/RouteNotFound";
 import {Messages} from "./pages/Messages/Messages";
 import {Profile} from "./pages/Profile/Profile";
 import {Log} from "./pages/Log/Log";
-import {useState} from "react";
 import {List} from "./pages/List/List";
 import {BookMark} from "./pages/BookMark/BookMark";
-import {Parameters} from "./pages/Parameters/Parameters";
+import {ParametersPassword} from "./pages/ParametersPassword/ParametersPassword";
+import {ParametersDeactivate} from "./pages/ParametersDeactivate/ParametersDeactivate";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -19,7 +19,8 @@ ReactDOM.render(
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/lists" element={<List/>}/>
             <Route path="/bookMarks" element={<BookMark/>}/>
-            <Route path="/parameters" element={<Parameters/>}/>
+            <Route path="/parameters/password" element={<ParametersPassword/>}/>
+            <Route path="/parameters/deactivate" element={<ParametersDeactivate/>}/>
             <Route path="*" element={<RouteNotFound/>}/>
         </Routes>
     </BrowserRouter>,

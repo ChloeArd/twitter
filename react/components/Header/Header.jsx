@@ -4,7 +4,7 @@ import {NavLink, Outlet} from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons'
-import {faCog, faPaintBrush, faTimes, faUser, faBookmark, faListUl, faHome, faComment} from "@fortawesome/free-solid-svg-icons";
+import {faCog, faTimes, faUser, faBookmark, faListUl, faHome, faComment} from "@fortawesome/free-solid-svg-icons";
 
 export const Header = function ({sessionGoogle}) {
 
@@ -19,12 +19,12 @@ export const Header = function ({sessionGoogle}) {
                 <FontAwesomeIcon id="logoTwitter" icon={faTwitter}/>
                 <div className="nav-links">
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/home">Accueil</NavLink>
-                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/2"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
+                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/notifications"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/messages">Messages</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/bookMarks">Signets</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/Lists">Listes</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/profile">Profil</NavLink>
-                    <NavLink to="/parameters"><FontAwesomeIcon className="icon" icon={faCog}/></NavLink>
+                    <NavLink to="/parameters/password"><FontAwesomeIcon className="icon" icon={faCog}/></NavLink>
                 </div>
                 <Outlet />
             </div>
@@ -46,12 +46,12 @@ export const Header = function ({sessionGoogle}) {
 
                 <div className="nav-links">
                     <NavLink to="/home"><FontAwesomeIcon className="icon" icon={faHome}/>Accueil</NavLink>
-                    <NavLink to="/2"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
+                    <NavLink to="/notifications"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
                     <NavLink to="/messages"><FontAwesomeIcon className="icon" icon={faComment}/>Messages</NavLink>
                     <NavLink to="/profile"><FontAwesomeIcon className="icon" icon={faUser}/>Profil</NavLink>
                     <NavLink to="/bookMarks"><FontAwesomeIcon className="icon" icon={faBookmark}/>Signets</NavLink>
                     <NavLink to="/lists"><FontAwesomeIcon className="icon" icon={faListUl}/>Listes</NavLink>
-                    <NavLink to="/parameters"><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>
+                    <NavLink to="/parameters/password"><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>
                 </div>
             </div>
         </header>
