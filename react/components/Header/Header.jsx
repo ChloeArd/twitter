@@ -23,7 +23,7 @@ export const Header = function ({sessionGoogle}) {
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/messages">Messages</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/bookMarks">Signets</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/Lists">Listes</NavLink>
-                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/profile">Profil</NavLink>
+                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/profile/">Profil</NavLink>
                     <NavLink to="/parameters/password"><FontAwesomeIcon className="icon" icon={faCog}/></NavLink>
                 </div>
                 <Outlet />
@@ -48,7 +48,7 @@ export const Header = function ({sessionGoogle}) {
                     <NavLink to="/home"><FontAwesomeIcon className="icon" icon={faHome}/>Accueil</NavLink>
                     <NavLink to="/notifications"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
                     <NavLink to="/messages"><FontAwesomeIcon className="icon" icon={faComment}/>Messages</NavLink>
-                    <NavLink to="/profile"><FontAwesomeIcon className="icon" icon={faUser}/>Profil</NavLink>
+                    <NavLink to="/profile/"><FontAwesomeIcon className="icon" icon={faUser}/>Profil</NavLink>
                     <NavLink to="/bookMarks"><FontAwesomeIcon className="icon" icon={faBookmark}/>Signets</NavLink>
                     <NavLink to="/lists"><FontAwesomeIcon className="icon" icon={faListUl}/>Listes</NavLink>
                     <NavLink to="/parameters/password"><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>

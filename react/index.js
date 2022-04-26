@@ -10,6 +10,9 @@ import {BookMark} from "./pages/BookMark/BookMark";
 import {ParametersPassword} from "./pages/ParametersPassword/ParametersPassword";
 import {ParametersDeactivate} from "./pages/ParametersDeactivate/ParametersDeactivate";
 import {ParametersDisplay} from "./pages/ParametersDisplay/ParametersDisplay";
+import {ProfileWithReplies} from "./pages/ProfileWithReplies/ProfileWithReplies";
+import {ProfileMedia} from "./pages/ProfileMedia/ProfileMedia";
+import {ProfileLikes} from "./pages/ProfileLikes/ProfileLikes";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -17,7 +20,10 @@ ReactDOM.render(
             <Route path="/" element={<Log/>}/>
             <Route path="/home" element={<Home/>}/>
             <Route path="/messages" element={<Messages/>}/>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/profile/" element={<Profile/>}/>
+            <Route path="/profile/with_replies" element={<ProfileWithReplies/>}/>
+            <Route path="/profile/media" element={<ProfileMedia/>}/>
+            <Route path="/profile/likes" element={<ProfileLikes/>}/>
             <Route path="/lists" element={<List/>}/>
             <Route path="/bookMarks" element={<BookMark/>}/>
             <Route path="/parameters/password" element={<ParametersPassword/>}/>

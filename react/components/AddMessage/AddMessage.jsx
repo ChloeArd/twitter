@@ -19,6 +19,7 @@ export const AddMessage = function () {
                     <h3>Nouveau message</h3>
                     <Search />
                     <textarea></textarea>
+                    <input type="submit" className="button buttonBlue" value="Envoyer"/>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ export const Home = function () {
 
     const [sessionGoogle, setSessionGoogle] = useState(JSON.parse(sessionStorage.getItem("infoGoogle")));
 
+    console.log(sessionGoogle);
     const page = "Accueil";
 
     useEffect(() => {

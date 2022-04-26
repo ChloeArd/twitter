@@ -43,6 +43,7 @@ export const Log = function () {
                         <input type="text" name="name" placeholder="Nom d'utilisateur" required/>
                         <input type="email" name="email" placeholder="Email"/>
                         <input type="tel" name="phone" placeholder="Téléphone"/>
+                        <input type="text" name="region" placeholder="Région" required/>
                         <label htmlFor="date">Date de naissance</label>
                         <input type="date" name="date" required/>
                         <label htmlFor="psw">Mot de passe</label>
