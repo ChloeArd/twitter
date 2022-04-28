@@ -111,6 +111,15 @@ class User
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: ReportComment::class)]
     private $reportComments;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Listing::class)]
+    private $listings;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: SubscriberListing::class)]
+    private $subscriberListings;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: MemberListing::class)]
+    private $memberListings;
+
     public function __construct()
     {
         $this->tweets = new ArrayCollection();
@@ -131,6 +140,9 @@ class User
         $this->bookMarkComments = new ArrayCollection();
         $this->reTweetComments = new ArrayCollection();
         $this->reportComments = new ArrayCollection();
+        $this->listings = new ArrayCollection();
+        $this->subscriberListings = new ArrayCollection();
+        $this->memberListings = new ArrayCollection();
     }
 
 
@@ -856,6 +868,96 @@ class User
             // set the owning side to null (unless already changed)
             if ($reportComment->getUser() === $this) {
                 $reportComment->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Listing>
+     */
+    public function getListings(): Collection
+    {
+        return $this->listings;
+    }
+
+    public function addListing(Listing $listing): self
+    {
+        if (!$this->listings->contains($listing)) {
+            $this->listings[] = $listing;
+            $listing->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListing(Listing $listing): self
+    {
+        if ($this->listings->removeElement($listing)) {
+            // set the owning side to null (unless already changed)
+            if ($listing->getUser() === $this) {
+                $listing->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SubscriberListing>
+     */
+    public function getSubscriberListings(): Collection
+    {
+        return $this->subscriberListings;
+    }
+
+    public function addSubscriberListing(SubscriberListing $subscriberListing): self
+    {
+        if (!$this->subscriberListings->contains($subscriberListing)) {
+            $this->subscriberListings[] = $subscriberListing;
+            $subscriberListing->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubscriberListing(SubscriberListing $subscriberListing): self
+    {
+        if ($this->subscriberListings->removeElement($subscriberListing)) {
+            // set the owning side to null (unless already changed)
+            if ($subscriberListing->getUser() === $this) {
+                $subscriberListing->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MemberListing>
+     */
+    public function getMemberListings(): Collection
+    {
+        return $this->memberListings;
+    }
+
+    public function addMemberListing(MemberListing $memberListing): self
+    {
+        if (!$this->memberListings->contains($memberListing)) {
+            $this->memberListings[] = $memberListing;
+            $memberListing->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMemberListing(MemberListing $memberListing): self
+    {
+        if ($this->memberListings->removeElement($memberListing)) {
+            // set the owning side to null (unless already changed)
+            if ($memberListing->getUser() === $this) {
+                $memberListing->setUser(null);
             }
         }
 

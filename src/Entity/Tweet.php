@@ -46,12 +46,16 @@ class Tweet
     #[ORM\OneToMany(mappedBy: 'tweet', targetEntity: ReportTweet::class)]
     private $reportTweets;
 
+    #[ORM\OneToMany(mappedBy: 'tweet', targetEntity: TweetListing::class)]
+    private $tweetListings;
+
     public function __construct()
     {
         $this->likeTweets = new ArrayCollection();
         $this->reTweets = new ArrayCollection();
         $this->bookMarkTweets = new ArrayCollection();
         $this->reportTweets = new ArrayCollection();
+        $this->tweetListings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -245,6 +249,36 @@ class Tweet
             // set the owning side to null (unless already changed)
             if ($reportTweet->getTweet() === $this) {
                 $reportTweet->setTweet(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TweetListing>
+     */
+    public function getTweetListings(): Collection
+    {
+        return $this->tweetListings;
+    }
+
+    public function addTweetListing(TweetListing $tweetListing): self
+    {
+        if (!$this->tweetListings->contains($tweetListing)) {
+            $this->tweetListings[] = $tweetListing;
+            $tweetListing->setTweet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTweetListing(TweetListing $tweetListing): self
+    {
+        if ($this->tweetListings->removeElement($tweetListing)) {
+            // set the owning side to null (unless already changed)
+            if ($tweetListing->getTweet() === $this) {
+                $tweetListing->setTweet(null);
             }
         }
 
