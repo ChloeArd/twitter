@@ -259,12 +259,12 @@ class User
         return $this;
     }
 
-    public function getBirthday(): ?\DateTimeInterface
+    public function getBirthday(): ?string
     {
         return $this->birthday;
     }
 
-    public function setBirthday(\DateTimeInterface $birthday): self
+    public function setBirthday(string $birthday): self
     {
         $this->birthday = $birthday;
 
@@ -274,7 +274,7 @@ class User
     /**
      * @return mixed
      */
-    public function getDateCreated(): ?\DateTimeInterface
+    public function getDateCreated(): ?string
     {
         return $this->date_created;
     }
@@ -282,7 +282,7 @@ class User
     /**
      * @param mixed $date_created
      */
-    public function setDateCreated(\DateTimeInterface $date_created): self
+    public function setDateCreated(string $date_created): self
     {
         $this->date_created = $date_created;
         return $this;
@@ -320,7 +320,7 @@ class User
     /**
      * @return mixed
      */
-    public function getGoogle(): ?int
+    public function getGoogle(): ?string
     {
         return $this->google;
     }
@@ -328,7 +328,7 @@ class User
     /**
      * @param mixed $google
      */
-    public function setGoogle(?int $google): self
+    public function setGoogle(?string $google): self
     {
         $this->google = $google;
         return $this;

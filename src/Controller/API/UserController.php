@@ -5,6 +5,8 @@ namespace App\Controller\API;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,21 +27,50 @@ class UserController extends AbstractController
     #[Route('/api/user/{id}', name: 'app_user', methods: ['GET'])]
     public function index(int $id): JsonResponse
     {
-        return $this->json($this->userRepository->find($id));
+        $test = $this->json("");
+        if(!empty($_GET["User"])) {
+            $test = $this->json($this->userRepository->find($id));
+        }
+        return $test;
     }
 
-    #[Route('/api/user/add', methods: ['POST'])]
+    #[Route('/api/user/add')]
     public function addUser(Request $request): JsonResponse
     {
         $payload = json_decode($request->getContent(), true);
-        if (!isset($payload['name']) || !isset($payload['pseudo']) || !isset($payload['email']) || !isset($payload['phone']) || !isset($payload['region']) || !isset($payload['birthday']) || !isset($payload['date_created']) || !isset($payload['password']) || !isset($payload['repeat_password']) || !isset($payload['roles']) || !isset($payload['id_google'])) {
+        if (!isset($payload['name'], $payload['pseudo'], $payload['email'], $payload['phone'], $payload['region'], $payload['birthday'], $payload['date_created'], $payload['password'], $payload['repeat_password'], $payload['roles'], $payload['google'])) {
             return $this->returnError('Il manque des paramètres');
         }
 
+        if ($payload['password'] !== $payload['repeat_password']) {
+            return $this->returnError("Les 2 mots de passe ne correspondent pas");
+        }
+
+        $maj = preg_match('@[A-Z]@', $payload['password']);
+        $min = preg_match('@[a-z]@', $payload['password']);
+        $number = preg_match('@[0-9]@', $payload['password']);
+        if ($maj && $min && $number && strlen($payload['password']) < 8) {
+            return $this->returnError("Le mot de passe ne contient pas de majuscule, minuscule, chiffres et il est inférieur à 8 caractères");
+        }
+
+        $encryptedPassword = password_hash($payload['password'], PASSWORD_BCRYPT);
+
         $user = new User();
+        $user
+            ->setPseudo($payload['pseudo'])
+            ->setName($payload['name'])
+            ->setEmail($payload['email'])
+            ->setPhone($payload['phone'])
+            ->setRegion($payload['region'])
+            ->setBirthday($payload['birthday'])
+            ->setDateCreated($payload['date_created'])
+            ->setPassword($encryptedPassword)
+            ->setRoles(["ROLE_USER"])
+            ->setGoogle($payload['google']);
+        ;
         $this->entityManager->persist($user);
         $this->entityManager->flush();
-        return $this->json($user);
+        return $this->json("Vous êtes bien inscrit !");
     }
 
     #[Route('/api/user/update/{id}', name: 'api_user_update', methods: ['PUT'])]
@@ -50,10 +81,14 @@ class UserController extends AbstractController
             return $this->returnError('Il manque des paramètres');
         }
 
-        $this->entityManager->flush();
-        return $this->json("ok");
+        //$this->entityManager->flush($user);
+        return $this->json($user);
     }
 
+    /**
+     * @throws OptimisticLockException
+     * @throws ORMException
+     */
     #[Route('/api/user/delete/{id}', name: 'api_user_delete', methods: ['DELETE'])]
     public function deleteUser(User $user): JsonResponse
     {
