@@ -11,7 +11,7 @@ export const Offline = function () {
     }, []);
 
     return (
-        <main className="Home">
+        <main className="Offline">
             <h1>Vous êtes hors ligne !</h1>
         </main>
     );

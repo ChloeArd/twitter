@@ -31,8 +31,8 @@ class Tweet
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\ManyToOne(targetEntity: Comment::class, inversedBy: 'reportComments')]
-    private $comment;
+    #[ORM\OneToMany(mappedBy: "tweet", targetEntity: Comment::class)]
+    private $comments;
 
     #[ORM\OneToMany(mappedBy: 'tweet', targetEntity: LikeTweet::class)]
     private $likeTweets;
@@ -63,16 +63,20 @@ class Tweet
         return $this->id;
     }
 
-    public function getTweet(): ?string
+    /**
+     * @return mixed
+     */
+    public function getTweet()
     {
         return $this->tweet;
     }
 
-    public function setTweet(?string $tweet): self
+    /**
+     * @param mixed $tweet
+     */
+    public function setTweet($tweet): void
     {
         $this->tweet = $tweet;
-
-        return $this;
     }
 
     public function getImage(): ?string
@@ -123,14 +127,32 @@ class Tweet
         return $this;
     }
 
-    public function getComment(): ?Comment
+    /**
+     * @return Collection<int, Comment>
+     */
+    public function getComments(): Collection
     {
-        return $this->comment;
+        return $this->comments;
     }
 
-    public function setComment(?Comment $comment): self
+    public function addComment(Comment $comment): self
     {
-        $this->comment = $comment;
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setTweet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getTweet() === $this) {
+                $comment->setTweet(null);
+            }
+        }
 
         return $this;
     }

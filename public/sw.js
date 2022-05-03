@@ -1,20 +1,37 @@
 
-const PREFIX = "V4";
+const PREFIX = "V2";
+const CACHED_FILES = [];
 
 self.addEventListener("install", (event) => {
     self.skipWaiting();
-    event.waitUntil((async () => {
+    event.waitUntil(
+        (async () => {
         const cache = await caches.open(PREFIX);
-        cache.add(new Request("/offline"));
+        await Promise.all(
+            [...CACHED_FILES, "./offline.html"].map((path) => {
+                return cache.add(new Request(path));
+            })
+        );
     }));
-})
+});
 
-self.addEventListener("activate", () => {
+self.addEventListener("activate", (event) => {
     clients.claim();
+    event.waitUntil(
+        (async () => {
+            const keys = await caches.keys();
+            await Promise.all(
+                keys.map((key) => {
+                    if (!key.includes(PREFIX)) {
+                        return caches.delete(key);
+                    }
+                })
+            );
+        })
+    );
 })
 
 self.addEventListener("fetch", (event) => {
-    console.log(`Fetching : ${event.request.url}, Mode : ${event.request.mode}`);
     if (event.request.mode === "navigate") {
         event.respondWith(
             (async () => {
@@ -23,19 +40,17 @@ self.addEventListener("fetch", (event) => {
                     if (preloadResponse) {
                         return preloadResponse;
                     }
-
                     return await fetch(event.request);
                 }
                 catch (e) {
                     const cache = await caches.open(PREFIX);
-                    //return await cache.match("/offline");
-                    //return new Response("Vous êtes hors ligne");
-                    return new Response(
-                        <main className="Home">
-                            <h1>Vous êtes hors ligne !</h1>
-                        </main>);
+                    //return await cache.match("./offline.html");
+                    return new Response("Vous êtes hors ligne, veuillez recharger la page !");
                 }
             })()
         );
+    }
+    else if (CACHED_FILES.includes(event.request.url)) {
+        event.respondWith(caches.match(event.request));
     }
 });

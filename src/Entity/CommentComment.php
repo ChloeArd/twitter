@@ -27,6 +27,9 @@ class CommentComment
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'commentComments')]
     private $user;
 
+    #[ORM\ManyToOne(targetEntity: Comment::class, inversedBy: 'commentComments')]
+    private $comment_fk;
+
     #[ORM\OneToMany(mappedBy: 'comment_comment', targetEntity: ReportCommentComment::class)]
     private $reportCommentComments;
 
@@ -39,8 +42,7 @@ class CommentComment
     #[ORM\OneToMany(mappedBy: 'comment_comment', targetEntity: BookMarkCommentComment::class)]
     private $bookMarkCommentComments;
 
-    #[ORM\OneToMany(mappedBy: 'comment_comment', targetEntity: Comment::class)]
-    private $comments;
+
 
     public function __construct()
     {
@@ -100,6 +102,18 @@ class CommentComment
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCommentFk(): ?Comment
+    {
+        return $this->comment_fk;
+    }
+
+    public function setCommentFk(?Comment $comment_fk): self
+    {
+        $this->comment_fk = $comment_fk;
 
         return $this;
     }

@@ -24,13 +24,13 @@ class UserController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/api/user/{id}', name: 'app_user', methods: ['GET'])]
-    public function index(User $user): JsonResponse
+    #[Route('/api/user/{id}', name: 'api_user', methods: ['GET'])]
+    public function user(int $id): JsonResponse
     {
-        return $this->json($this->userRepository->find($user->getId()));
+        return $this->json($this->userRepository->find($id));
     }
 
-    #[Route('/api/user/add')]
+    #[Route('/api/user/add', name: "api_user_add" ,methods: ['POST'])]
     public function addUser(Request $request): JsonResponse
     {
         $payload = json_decode($request->getContent(), true);

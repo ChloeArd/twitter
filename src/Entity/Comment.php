@@ -24,11 +24,14 @@ class Comment
     #[ORM\Column(type: 'date')]
     private $date;
 
-    #[ORM\ManyToOne(targetEntity: CommentComment::class, inversedBy: 'comments')]
-    private $comment_comment;
-
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
     private $user;
+
+    #[ORM\ManyToOne(targetEntity: Tweet::class, inversedBy: 'comments')]
+    private $tweet;
+
+    #[ORM\OneToMany(mappedBy: 'comment', targetEntity: CommentComment::class)]
+    private $comment_comments;
 
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: LikeComment::class)]
     private $likeComments;
@@ -42,8 +45,6 @@ class Comment
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: ReportComment::class)]
     private $reportComments;
 
-    #[ORM\OneToMany(mappedBy: 'comment', targetEntity: Tweet::class)]
-    private $tweets;
 
     public function __construct()
     {
@@ -58,16 +59,20 @@ class Comment
         return $this->id;
     }
 
-    public function getComment(): ?string
+    /**
+     * @return mixed
+     */
+    public function getComment()
     {
         return $this->comment;
     }
 
-    public function setComment(?string $comment): self
+    /**
+     * @param mixed $comment
+     */
+    public function setComment($comment): void
     {
         $this->comment = $comment;
-
-        return $this;
     }
 
     public function getImage(): ?string
@@ -94,18 +99,6 @@ class Comment
         return $this;
     }
 
-    public function getCommentComment(): ?CommentComment
-    {
-        return $this->comment_comment;
-    }
-
-    public function setCommentComment(?CommentComment $comment_comment): self
-    {
-        $this->comment_comment = $comment_comment;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -114,6 +107,48 @@ class Comment
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getTweet(): ?Tweet
+    {
+        return $this->tweet;
+    }
+
+    public function setTweet(?Tweet $tweet): self
+    {
+        $this->tweet = $tweet;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CommentComment>
+     */
+    public function getCommentComments(): Collection
+    {
+        return $this->comment_comments;
+    }
+
+    public function addCommentComment(CommentComment $commentComment): self
+    {
+        if (!$this->comment_comments->contains($commentComment)) {
+            $this->comment_comments[] = $commentComment;
+            $commentComment->setComment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentComment(CommentComment $commentComment): self
+    {
+        if ($this->comment_comments->removeElement($commentComment)) {
+            // set the owning side to null (unless already changed)
+            if ($commentComment->getComment() === $this) {
+                $commentComment->setComment(null);
+            }
+        }
 
         return $this;
     }
@@ -232,36 +267,6 @@ class Comment
             // set the owning side to null (unless already changed)
             if ($reportComment->getComment() === $this) {
                 $reportComment->setComment(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Tweet>
-     */
-    public function getTweet(): Collection
-    {
-        return $this->tweets;
-    }
-
-    public function addTweet(Tweet $tweet): self
-    {
-        if (!$this->tweets->contains($tweet)) {
-            $this->tweets[] = $tweet;
-            $tweet->setTweet($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTweet(Tweet $tweet): self
-    {
-        if ($this->tweets->removeElement($tweet)) {
-            // set the owning side to null (unless already changed)
-            if ($tweet->getComment() === $this) {
-                $tweet->setComment(null);
             }
         }
 
