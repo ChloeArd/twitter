@@ -13,6 +13,7 @@ import {ParametersDisplay} from "./pages/ParametersDisplay/ParametersDisplay";
 import {ProfileWithReplies} from "./pages/ProfileWithReplies/ProfileWithReplies";
 import {ProfileMedia} from "./pages/ProfileMedia/ProfileMedia";
 import {ProfileLikes} from "./pages/ProfileLikes/ProfileLikes";
+import {Offline} from "./pages/Offline/Offline.jsx";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -30,6 +31,7 @@ ReactDOM.render(
             <Route path="/parameters/deactivate" element={<ParametersDeactivate/>}/>
             <Route path="/parameters/deactivate" element={<ParametersDeactivate/>}/>
             <Route path="/parameters/display" element={<ParametersDisplay/>}/>
+            <Route path="/offline" element={<Offline />} />
             <Route path="*" element={<RouteNotFound/>}/>
         </Routes>
     </BrowserRouter>,

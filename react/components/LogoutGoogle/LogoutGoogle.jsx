@@ -7,14 +7,14 @@ export const LogoutGoogle = function () {
 
     const onSuccess = () => {
         alert("Logout made successfully");
-        window.location.replace("http://localhost:8000/home");
+        window.location.replace("http://localhost:8000");
     }
 
     return(
         <>
             <GoogleLogout
                 clientId={clientId}
-                buttonText="S'inscrire avec Google"
+                buttonText="Se déconnecter"
                 onLogoutSuccess={onSuccess}
                 className="logoutGoogle"
             ></GoogleLogout>

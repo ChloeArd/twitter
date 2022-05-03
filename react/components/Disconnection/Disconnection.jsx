@@ -2,6 +2,7 @@ import "./Disconnection.css";
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
+import {LogoutGoogle} from "../LogoutGoogle/LogoutGoogle";
 
 export const Disconnection = function ({sessionGoogle}) {
 
@@ -14,6 +15,7 @@ export const Disconnection = function ({sessionGoogle}) {
             <div className="flexColumn pad-10-20">
                 <p>{sessionGoogle.name}</p>
                 <p className="pseudo-2">@pseudo</p>
+                <LogoutGoogle />
             </div>
             <FontAwesomeIcon icon={faSignOutAlt} className="grey"/>
         </div>

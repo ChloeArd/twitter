@@ -1,0 +1,13 @@
+{
+  "name": "Twitter",
+  "icons": [
+    {
+      "src": "./assets/img/124021.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone"
+}

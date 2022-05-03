@@ -25,13 +25,9 @@ class UserController extends AbstractController
     }
 
     #[Route('/api/user/{id}', name: 'app_user', methods: ['GET'])]
-    public function index(int $id): JsonResponse
+    public function index(User $user): JsonResponse
     {
-        $test = $this->json("");
-        if(!empty($_GET["User"])) {
-            $test = $this->json($this->userRepository->find($id));
-        }
-        return $test;
+        return $this->json($this->userRepository->find($user->getId()));
     }
 
     #[Route('/api/user/add')]
@@ -49,7 +45,7 @@ class UserController extends AbstractController
         $maj = preg_match('@[A-Z]@', $payload['password']);
         $min = preg_match('@[a-z]@', $payload['password']);
         $number = preg_match('@[0-9]@', $payload['password']);
-        if ($maj && $min && $number && strlen($payload['password']) < 8) {
+        if (!$maj && !$min && !$number && strlen($payload['password']) < 8) {
             return $this->returnError("Le mot de passe ne contient pas de majuscule, minuscule, chiffres et il est inférieur à 8 caractères");
         }
 

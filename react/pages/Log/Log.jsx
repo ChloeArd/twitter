@@ -2,7 +2,6 @@ import "./Log.css";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {LoginGoogle} from "../../components/LoginGoogle/LoginGoogle";
-import {LogoutGoogle} from "../../components/LogoutGoogle/LogoutGoogle";
 
 export const Log = function () {
 
@@ -36,7 +35,7 @@ export const Log = function () {
             <div id="containerRegIns" className="flexRow">
                 <div id="registration">
                     <h2>Rejoins Twitter dès aujourd'hui.</h2>
-                    <LogoutGoogle />
+                    <LoginGoogle name={"S'inscrire avec Google"} />
                     <p>Ou</p>
                     <button id="buttonRegistration" className="button buttonBlue" onClick={displayFormRegistration}>S'inscrire avec un numéro de teléphone ou une adresse mail</button>
                     <div id="containerRegistration">
@@ -56,7 +55,7 @@ export const Log = function () {
                 </div>
                 <div id="inscription">
                     <h2>Connecte-toi.</h2>
-                    <LoginGoogle />
+                    <LoginGoogle name="Se connecter avec Google" />
                     <p>Ou</p>
                     <button id="buttonInscription" className="button buttonBlue" onClick={displayFormInscription}>Se connecter avec un numéro de teléphone ou une adresse mail</button>
                     <div id="containerInscription">
