@@ -2,8 +2,34 @@ import "./Log.css";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {LoginGoogle} from "../../components/LoginGoogle/LoginGoogle";
+import {useEffect, useState} from "react";
+import {useForm} from "react-hook-form";
 
 export const Log = function () {
+
+    const {register, handleSubmit} = useForm();
+    const [user, setUser] = useState([]);
+
+
+    function onSubmit(formData) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/user/add");
+        xhr.responseType = "json";
+        xhr.onload = () => xhr.status === 200 && setUser(xhr.response)
+        const body = {
+            name: formData.name,
+            pseudo: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            region: formData.region,
+            birthday: formData.birthday,
+            password: formData.password,
+            repeat_password: formData.passwordR,
+        }
+        xhr.send(JSON.stringify(body));
+
+        window.location.href = "http://localhost:8000?success=0"
+    }
 
     let a = 0;
     function displayFormRegistration () {
@@ -38,19 +64,19 @@ export const Log = function () {
                     <LoginGoogle name={"S'inscrire avec Google"} />
                     <p>Ou</p>
                     <button id="buttonRegistration" className="button buttonBlue" onClick={displayFormRegistration}>S'inscrire avec un numéro de teléphone ou une adresse mail</button>
-                    <div id="containerRegistration">
-                        <input type="text" name="name" placeholder="Nom d'utilisateur" required/>
-                        <input type="email" name="email" placeholder="Email"/>
-                        <input type="tel" name="phone" placeholder="Téléphone"/>
-                        <input type="text" name="region" placeholder="Région" required/>
-                        <label htmlFor="date">Date de naissance</label>
-                        <input type="date" name="date" required/>
+                    <form onSubmit={handleSubmit(onSubmit)} id="containerRegistration">
+                        <input type="text" name="name" placeholder="Nom d'utilisateur" {...register("name")} required/>
+                        <input type="email" name="email" placeholder="Email" {...register("email")} required/>
+                        <input type="tel" name="phone" placeholder="Téléphone" {...register("phone")} required/>
+                        <input type="text" name="region" placeholder="Région" {...register("region")} required/>
+                        <label htmlFor="birthday">Date de naissance</label>
+                        <input type="date" name="birthday" {...register("birthday")} required/>
                         <label htmlFor="psw">Mot de passe</label>
-                        <input type="password" name="psw_reg" required/>
+                        <input type="password" name="psw_reg" {...register("password")} required/>
                         <label htmlFor="psw_repeat">Répéter le mot de passe</label>
-                        <input type="password" name="psw_repeat" required></input>
-                        <input type="submit" value="S'inscrire"/>
-                    </div>
+                        <input type="password" name="psw_repeat" {...register("passwordR")} required></input>
+                        <input type="submit" value="S'inscrire" />
+                    </form>
 
                 </div>
                 <div id="inscription">

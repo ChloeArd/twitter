@@ -34,7 +34,7 @@ class UserController extends AbstractController
     public function addUser(Request $request): JsonResponse
     {
         $payload = json_decode($request->getContent(), true);
-        if (!isset($payload['name'], $payload['pseudo'], $payload['email'], $payload['phone'], $payload['region'], $payload['birthday'], $payload['date_created'], $payload['password'], $payload['repeat_password'], $payload['roles'], $payload['google'])) {
+        if (!isset($payload['name'], $payload['pseudo'], $payload['email'], $payload['phone'], $payload['region'], $payload['birthday'], $payload['password'], $payload['repeat_password'])) {
             return $this->returnError('Il manque des paramètres');
         }
 
@@ -59,8 +59,33 @@ class UserController extends AbstractController
             ->setPhone($payload['phone'])
             ->setRegion($payload['region'])
             ->setBirthday($payload['birthday'])
-            ->setDateCreated($payload['date_created'])
+            ->setDateCreated(date("d/m/Y"))
             ->setPassword($encryptedPassword)
+            ->setRoles(["ROLE_USER"])
+        ;
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+        return $this->json("Vous êtes bien inscrit !");
+    }
+
+    #[Route('/api/user/google', name: "api_user_google" ,methods: ['POST'])]
+    public function addUserGoogle(Request $request): JsonResponse
+    {
+        $payload = json_decode($request->getContent(), true);
+        if (!isset($payload['name'], $payload['pseudo'], $payload['email'], $payload['google'], $payload['image'])) {
+            return $this->returnError('Il manque des paramètres');
+        }
+
+        $user = new User();
+        $user
+            ->setPseudo($payload['pseudo'])
+            ->setName($payload['name'])
+            ->setEmail($payload['email'])
+            ->setPictureProfile($payload['image'])
+            ->setRegion("Paris")
+            ->setBirthday(date("d/m/Y"))
+            ->setDateCreated(date("d/m/Y"))
+            ->setPassword("1")
             ->setRoles(["ROLE_USER"])
             ->setGoogle($payload['google']);
         ;

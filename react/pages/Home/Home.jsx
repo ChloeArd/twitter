@@ -6,10 +6,13 @@ import {TweetItem} from "../../components/TweetItem/TweetItem";
 import {Disconnection} from "../../components/Disconnection/Disconnection";
 import {AddTweet} from "../../components/AddTweet/AddTweet";
 import {Header} from "../../components/Header/Header";
+import {UseFetch} from "../../hooks/UseFetch";
 
 export const Home = function () {
 
     const [sessionGoogle, setSessionGoogle] = useState(JSON.parse(sessionStorage.getItem("infoGoogle")));
+    const {isLoading, apiData} = UseFetch("api/user/25");
+    console.log(apiData);
 
     const page = "Accueil";
 
