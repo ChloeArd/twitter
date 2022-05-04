@@ -5,15 +5,16 @@ import {useState} from "react";
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleRight, faArrowLeft, faKey, faPaintBrush, faUserXmark} from "@fortawesome/free-solid-svg-icons";
+import {UseFetch} from "../../hooks/UseFetch";
 
 export const ParametersDisplay = function () {
 
-    const [sessionGoogle, setSessionGoogle] = useState(JSON.parse(sessionStorage.getItem("infoGoogle")));
+    const {isLoading, apiData} = UseFetch("api/user/25");
     const page = "Paramètres";
 
     return(
         <>
-            <Header sessionGoogle={sessionGoogle}/>
+            <Header user={apiData}/>
             <main className="ParametersDisplay">
                 <div id="profile-top" className="flexRow align">
                     <NavLink to="/home"><FontAwesomeIcon icon={faArrowLeft} className="grey icon" /></NavLink>
@@ -35,7 +36,7 @@ export const ParametersDisplay = function () {
                     </div>
                 </div>
 
-                <Disconnection sessionGoogle={sessionGoogle} />
+                <Disconnection user={apiData} />
             </main>
         </>
     );

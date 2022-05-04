@@ -8,11 +8,12 @@ import {useState} from "react";
 import {faPlusSquare} from "@fortawesome/free-regular-svg-icons";
 import {ListItem} from "../../components/ListItem/ListItem";
 import {AddList} from "../../components/AddList/AddList";
+import {UseFetch} from "../../hooks/UseFetch";
 
 export const List = function () {
 
     const page = "Listes";
-    const [sessionGoogle, setSessionGoogle] = useState(JSON.parse(sessionStorage.getItem("infoGoogle")));
+    const {isLoading, apiData} = UseFetch("api/user/25");
 
     // Display a form to create list
     function displayAddList() {
@@ -21,13 +22,13 @@ export const List = function () {
 
     return (
         <>
-            <Header sessionGoogle={sessionGoogle}/>
+            <Header user={apiData}/>
             <main className="List">
                 <div id="profile-top" className="flexRow align">
                     <NavLink to="/home"><FontAwesomeIcon icon={faArrowLeft} className="grey icon" /></NavLink>
                     <div className="flexColumn pseudoProfile">
                         <h1 className="titlePage">{page}</h1>
-                        <p className="grey">@pseudo</p>
+                        <p className="grey">@{apiData.pseudo}</p>
                     </div>
                     <div className="flex-end2">
                         <FontAwesomeIcon icon={faPlusSquare} className="icon icon2 grey" onClick={displayAddList} />
@@ -35,9 +36,9 @@ export const List = function () {
                     </div>
                 </div>
                 <h1 className="pad-10-20">Vos listes</h1>
-                <ListItem sessionGoogle={sessionGoogle} />
+                <ListItem user={apiData} />
                 <AddList />
-                <Disconnection sessionGoogle={sessionGoogle} />
+                <Disconnection user={apiData} />
             </main>
         </>
     );

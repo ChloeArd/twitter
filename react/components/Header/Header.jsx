@@ -6,7 +6,7 @@ import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons'
 import {faCog, faTimes, faUser, faBookmark, faListUl, faHome, faComment} from "@fortawesome/free-solid-svg-icons";
 
-export const Header = function ({sessionGoogle}) {
+export const Header = function ({user}) {
 
     // close a header
     function closeHeader() {
@@ -23,7 +23,7 @@ export const Header = function ({sessionGoogle}) {
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/messages">Messages</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/bookMarks">Signets</NavLink>
                     <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/Lists">Listes</NavLink>
-                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/profile/">Profil</NavLink>
+                    <NavLink style={({isActive}) => {return {fontWeight: isActive ? "bold" : "normal"};}} to="/profile">Profil</NavLink>
                     <NavLink to="/parameters/password"><FontAwesomeIcon className="icon" icon={faCog}/></NavLink>
                 </div>
                 <Outlet />
@@ -32,13 +32,13 @@ export const Header = function ({sessionGoogle}) {
                 <h3>Information du compte</h3>
                 <FontAwesomeIcon id="close" className="icon grey" icon={faTimes} onClick={closeHeader}/>
                 <div className="pad-0-15">
-                    {sessionGoogle !== [] ? <img className="image-user" src={sessionGoogle.imageUrl} /> :
+                    {user.pictureProfile !== null ? <img className="image-user" src={user.pictureProfile} /> :
                         <img className="image-user align justify" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png" />
                     }
 
-                    <p className="name">{sessionGoogle.name}</p>
+                    <p className="name">{user.name}</p>
                 </div>
-                <p className="pad-0-15 grey">@pseudo</p>
+                <p className="pad-0-15 grey">@{user.pseudo}</p>
                 <div className="subscribe">
                     <p className="pad-0-15">55 <span className="grey">abonnements</span></p>
                     <p className="pad-0-15">55 <span className="grey">abonnés</span></p>
@@ -48,7 +48,7 @@ export const Header = function ({sessionGoogle}) {
                     <NavLink to="/home"><FontAwesomeIcon className="icon" icon={faHome}/>Accueil</NavLink>
                     <NavLink to="/notifications"><FontAwesomeIcon className="icon" icon={faBell}/>Notifications</NavLink>
                     <NavLink to="/messages"><FontAwesomeIcon className="icon" icon={faComment}/>Messages</NavLink>
-                    <NavLink to="/profile/"><FontAwesomeIcon className="icon" icon={faUser}/>Profil</NavLink>
+                    <NavLink to="/profile"><FontAwesomeIcon className="icon" icon={faUser}/>Profil</NavLink>
                     <NavLink to="/bookMarks"><FontAwesomeIcon className="icon" icon={faBookmark}/>Signets</NavLink>
                     <NavLink to="/lists"><FontAwesomeIcon className="icon" icon={faListUl}/>Listes</NavLink>
                     <NavLink to="/parameters/password"><FontAwesomeIcon className="icon" icon={faCog}/>Paramètres</NavLink>

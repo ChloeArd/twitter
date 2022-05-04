@@ -10,9 +10,7 @@ import {UseFetch} from "../../hooks/UseFetch";
 
 export const Home = function () {
 
-    const [sessionGoogle, setSessionGoogle] = useState(JSON.parse(sessionStorage.getItem("infoGoogle")));
     const {isLoading, apiData} = UseFetch("api/user/25");
-    console.log(apiData);
 
     const page = "Accueil";
 
@@ -30,11 +28,11 @@ export const Home = function () {
     }
     return (
         <>
-            <Header sessionGoogle={sessionGoogle} />
+            <Header user={apiData} />
             <main className="Home">
                 <div id="home-top" className="flexRow align">
                     <div className="flexRow">
-                        {sessionGoogle !== [] ? <img id="displayMenu" onClick={displayHeader} className="image-user" src={sessionGoogle.imageUrl} />
+                        {apiData.pictureProfile !== null ? <img id="displayMenu" onClick={displayHeader} className="image-user" src={apiData.pictureProfile} />
                             :
                             <img id="displayMenu" onClick={displayHeader}  className="image-user" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png" />
                         }
@@ -46,7 +44,7 @@ export const Home = function () {
                 <TweetItem />
                 <TweetItem />
                 <TweetItem />
-                <Disconnection sessionGoogle={sessionGoogle}/>
+                <Disconnection user={apiData}/>
                 <AddTweet />
             </main>
         </>

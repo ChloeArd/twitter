@@ -21,7 +21,7 @@ ReactDOM.render(
             <Route path="/" element={<Log/>}/>
             <Route path="/home" element={<Home/>}/>
             <Route path="/messages" element={<Messages/>}/>
-            <Route path="/profile/" element={<Profile/>}/>
+            <Route path="/profile" element={<Profile/>}/>
             <Route path="/profile/with_replies" element={<ProfileWithReplies/>}/>
             <Route path="/profile/media" element={<ProfileMedia/>}/>
             <Route path="/profile/likes" element={<ProfileLikes/>}/>

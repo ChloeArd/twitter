@@ -2,7 +2,7 @@ import "./EditProfile.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
-export const EditProfile = function ({sessionGoogle}) {
+export const EditProfile = function ({user}) {
 
     function closeModal() {
         document.getElementById("EditProfile").style.display = "none";
@@ -23,9 +23,9 @@ export const EditProfile = function ({sessionGoogle}) {
                     <label>La photo de profil</label>
                     <input type="file"/>
                     <label>Nom</label>
-                    <input type="text" value={sessionGoogle.name}/>
+                    <input type="text" value={user.name}/>
                     <label>Email</label>
-                    <input type="email" value={sessionGoogle.email}/>
+                    <input type="email" value={user.email}/>
                     <label>Téléphone</label>
                     <input type="tel"/>
                     <label>Biographie</label>

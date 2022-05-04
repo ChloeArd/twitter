@@ -1,6 +1,6 @@
 import "./ListItem.css";
 
-export const ListItem = function ({sessionGoogle}) {
+export const ListItem = function ({user}) {
 
     return(
         <div className="ListItem flexRow">
@@ -10,11 +10,11 @@ export const ListItem = function ({sessionGoogle}) {
             <div className="infoList flexColumn">
                 <h3>Name List</h3>
                 <div className="flexRow">
-                    {sessionGoogle !== [] ? <img className="image-user-list" src={sessionGoogle.imageUrl}/>:
+                    {user.pictureProfile !== null ? <img className="image-user-list" src={user.pictureProfile}/>:
                         <img className="image-user-list" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png"/>
                     }
-                    <p>{sessionGoogle.name}</p>
-                    <p className="grey">@pseudo</p>
+                    <p>{user.name}</p>
+                    <p className="grey">@{user.pseudo}</p>
                 </div>
             </div>
         </div>

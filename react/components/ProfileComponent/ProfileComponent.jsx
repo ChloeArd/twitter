@@ -4,9 +4,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faBirthdayCake, faCalendarAlt, faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 import {NavLink} from "react-router-dom";
 
-export const ProfileComponent = function ({sessionGoogle}) {
+export const ProfileComponent = function ({user}) {
 
-    const page = sessionGoogle.name;
+    console.log(user);
+
+    const page = user.name;
 
     useEffect(() => {
         document.title = page;
@@ -21,13 +23,13 @@ export const ProfileComponent = function ({sessionGoogle}) {
             <div id="profile-top" className="flexRow align">
                 <NavLink to="/home"><FontAwesomeIcon icon={faArrowLeft} className="grey icon" /></NavLink>
                 <div className="flexColumn pseudoProfile">
-                    <h1 className="titlePage">{sessionGoogle.name}</h1>
+                    <h1 className="titlePage">{user.name}</h1>
                     <p className="grey">0 Tweets</p>
                 </div>
             </div>
             <img id="background-user" src="https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-blue-minimalist-technology-computer-banner-image_188887.jpg"/>
             <div id="photo-user">
-                {sessionGoogle !== [] ? <img src={sessionGoogle.imageUrl} /> :
+                {user.pictureProfile !== null ? <img src={user.pictureProfile} /> :
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png"/>
                 }
             </div>
@@ -35,15 +37,15 @@ export const ProfileComponent = function ({sessionGoogle}) {
                 <div className="flex-end2">
                     <button id="editProfile" onClick={displayEditProfile}>Editer le profil</button>
                 </div>
-                <h1>{sessionGoogle.name}</h1>
-                <p className="grey">@pseudo</p>
+                <h1>{user.name}</h1>
+                <p className="grey">@{user.pseudo}</p>
                 <p id="description-user">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus ...
                     nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</p>
                 <div className="flexRow align pad-bottom">
                     <p className="grey pad-right"><FontAwesomeIcon icon={faMapMarkerAlt} className="blue pad-right" />Région</p>
                     <p className="grey"><FontAwesomeIcon icon={faBirthdayCake} className="blue pad-right" /> 00/00/0000</p>
                 </div>
-                <p className="grey pad-bottom"><FontAwesomeIcon icon={faCalendarAlt} className="blue pad-right" /> A rejoint Twitter le 00/00/0000</p>
+                <p className="grey pad-bottom"><FontAwesomeIcon icon={faCalendarAlt} className="blue pad-right" /> A rejoint Twitter le {user.dateCreated}</p>
                 <div id="subscribe" className="flexRow">
                     <p className="grey pad-right"><span className="blue">55</span> abonnements</p>
                     <p className="grey"><span className="blue">55</span> abonnés</p>
