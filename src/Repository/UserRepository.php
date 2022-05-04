@@ -22,8 +22,9 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
+     * @param User $entity
+     * @param bool $flush
+     * @return void
      */
     public function add(User $entity, bool $flush = true): void
     {
@@ -34,8 +35,9 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
+     * @param User $entity
+     * @param bool $flush
+     * @return void
      */
     public function remove(User $entity, bool $flush = true): void
     {

@@ -70,7 +70,7 @@ class User
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: BookMarkTweet::class)]
     private $bookMarkTweets;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: ReportTweet::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: ReportTweet::class)]
     private $reportTweets;
 
     #[ORM\OneToMany(mappedBy: 'user_me', targetEntity: Blocked::class)]
