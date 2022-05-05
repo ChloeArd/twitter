@@ -19,11 +19,11 @@ class ReportTweet
     #[ORM\Column(type: 'text')]
     private $why;
 
-    #[ORM\ManyToOne(targetEntity: Tweet::class, inversedBy: 'reportTweets')]
-    private $tweet;
-
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reportTweets')]
     private $user;
+
+    #[ORM\ManyToOne(targetEntity: Tweet::class, inversedBy: 'reportTweets')]
+    private $tweet;
 
     public function getId(): ?int
     {
@@ -54,18 +54,6 @@ class ReportTweet
         return $this;
     }
 
-    public function getTweet(): ?Tweet
-    {
-        return $this->tweet;
-    }
-
-    public function setTweet(?Tweet $tweet): self
-    {
-        $this->tweet = $tweet;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -74,6 +62,18 @@ class ReportTweet
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getTweet(): ?Tweet
+    {
+        return $this->tweet;
+    }
+
+    public function setTweet(?Tweet $tweet): self
+    {
+        $this->tweet = $tweet;
 
         return $this;
     }

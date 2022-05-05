@@ -17,7 +17,7 @@ export const Disconnection = function ({user}) {
                 <p className="pseudo-2">@{user.pseudo}</p>
                 {user.google !== null ? <LogoutGoogle /> : ""}
             </div>
-            <FontAwesomeIcon icon={faSignOutAlt} className="grey"/>
+            {user.google !== null ? "" : <FontAwesomeIcon icon={faSignOutAlt} className="grey"/>}
         </div>
     )
 }

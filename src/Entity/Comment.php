@@ -27,9 +27,6 @@ class Comment
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
     private $user;
 
-    #[ORM\ManyToOne(targetEntity: Tweet::class, inversedBy: 'comments')]
-    private $tweet;
-
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: CommentComment::class)]
     private $comment_comments;
 
@@ -45,9 +42,12 @@ class Comment
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: ReportComment::class)]
     private $reportComments;
 
+    #[ORM\ManyToOne(targetEntity: Tweet::class, inversedBy: 'comments')]
+    private $tweet;
 
     public function __construct()
     {
+        $this->comment_comments = new ArrayCollection();
         $this->likeComments = new ArrayCollection();
         $this->bookMarkComments = new ArrayCollection();
         $this->reTweetComments = new ArrayCollection();
@@ -107,18 +107,6 @@ class Comment
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getTweet(): ?Tweet
-    {
-        return $this->tweet;
-    }
-
-    public function setTweet(?Tweet $tweet): self
-    {
-        $this->tweet = $tweet;
 
         return $this;
     }
@@ -269,6 +257,18 @@ class Comment
                 $reportComment->setComment(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTweet(): ?Tweet
+    {
+        return $this->tweet;
+    }
+
+    public function setTweet(?Tweet $tweet): self
+    {
+        $this->tweet = $tweet;
 
         return $this;
     }

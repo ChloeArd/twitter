@@ -17,7 +17,7 @@ export const LoginGoogle = function ({name}) {
 
     const [sessionGoogle, setSessionGoogle] = useState(JSON.parse(sessionStorage.getItem("infoGoogle")));
 
-    if (sessionGoogle !== []) {
+    if (sessionGoogle !== null) {
         useEffect(() => {
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "/api/user/google");
@@ -31,8 +31,9 @@ export const LoginGoogle = function ({name}) {
                 google: sessionGoogle.googleId,
             }
             xhr.send(JSON.stringify(body));
-        }, []);
+        }, [])
     }
+
 
     const onFailure = (res) => {
         console.log("[Login failed] res:", res);

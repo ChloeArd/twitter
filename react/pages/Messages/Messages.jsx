@@ -5,7 +5,6 @@ import {Search} from "../../components/Search/Search";
 import {Disconnection} from "../../components/Disconnection/Disconnection";
 import {faCog, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import {faPlusSquare, faHandPointRight, faImage} from '@fortawesome/free-regular-svg-icons';
-
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {UserMessages} from "../../components/UserMessages/UserMessages";
 import {AddMessage} from "../../components/AddMessage/AddMessage";
