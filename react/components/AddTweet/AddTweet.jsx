@@ -3,21 +3,22 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {useForm} from "react-hook-form";
 import {useState} from "react";
+import {UseFetch} from "../../hooks/UseFetch";
 
-export const AddTweet = function () {
+export const AddTweet = function ({user}) {
 
     const {register, handleSubmit} = useForm();
     const [tweet, setTweet] = useState([]);
 
+    const {isLoading, apiData} = UseFetch(user.google !== undefined ? "api/user/google/" + user.google : "");
+
+    sessionStorage.setItem("idUser", apiData.id);
 
     function closeModal() {
         document.getElementById("AddTweet").style.display = "none";
     }
 
-
     function onSubmit(formData) {
-        console.log(formData);
-
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/tweet/add");
         xhr.responseType = "json";
@@ -26,7 +27,7 @@ export const AddTweet = function () {
             tweet: formData.tweet,
             image: formData.image[0].name,
             view: formData.view,
-            user_id: 17,
+            user_id: apiData.id,
         }
         xhr.send(JSON.stringify(body));
 

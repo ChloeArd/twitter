@@ -4,13 +4,17 @@ import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faEllipsisH} from "@fortawesome/free-solid-svg-icons";
 import {Disconnection} from "../../components/Disconnection/Disconnection";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {UseFetch} from "../../hooks/UseFetch";
 
 export const BookMark = function () {
 
     const page = "Signets";
     const {isLoading, apiData} = UseFetch("api/user/25");
+
+    useEffect(() => {
+        document.title = page;
+    }, []);
 
     return(
         <>

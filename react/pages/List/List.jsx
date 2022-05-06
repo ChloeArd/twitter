@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faEllipsisH,} from "@fortawesome/free-solid-svg-icons";
 import {Disconnection} from "../../components/Disconnection/Disconnection";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {faPlusSquare} from "@fortawesome/free-regular-svg-icons";
 import {ListItem} from "../../components/ListItem/ListItem";
 import {AddList} from "../../components/AddList/AddList";
@@ -14,6 +14,10 @@ export const List = function () {
 
     const page = "Listes";
     const {isLoading, apiData} = UseFetch("api/user/25");
+
+    useEffect(() => {
+        document.title = page;
+    }, []);
 
     // Display a form to create list
     function displayAddList() {

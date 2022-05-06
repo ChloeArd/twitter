@@ -45,7 +45,7 @@ export const Home = function () {
                 <TweetItem />
                 <TweetItem />
                 <Disconnection user={apiData}/>
-                <AddTweet />
+                <AddTweet user={apiData} />
             </main>
         </>
     );

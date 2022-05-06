@@ -27,7 +27,10 @@ class Comment
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
     private $user;
 
-    #[ORM\OneToMany(mappedBy: 'comment', targetEntity: CommentComment::class)]
+    #[ORM\ManyToOne(targetEntity: Tweet::class, inversedBy: 'comments')]
+    private $tweet;
+
+    #[ORM\OneToMany(mappedBy: 'comment_fk', targetEntity: CommentComment::class)]
     private $comment_comments;
 
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: LikeComment::class)]
@@ -42,8 +45,6 @@ class Comment
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: ReportComment::class)]
     private $reportComments;
 
-    #[ORM\ManyToOne(targetEntity: Tweet::class, inversedBy: 'comments')]
-    private $tweet;
 
     public function __construct()
     {

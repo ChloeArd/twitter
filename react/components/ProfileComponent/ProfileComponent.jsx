@@ -6,12 +6,8 @@ import {NavLink} from "react-router-dom";
 
 export const ProfileComponent = function ({user}) {
 
-    console.log(user);
-
-    const page = user.name;
-
     useEffect(() => {
-        document.title = page;
+        document.title = user.name;
     }, []);
 
     function displayEditProfile() {
@@ -52,7 +48,7 @@ export const ProfileComponent = function ({user}) {
                 </div>
             </div>
             <div id="tweets-user" className="flexRow align justifyContent">
-                <NavLink to="/profile/" style={({isActive}) => {return {borderBottom: isActive ? "5px solid #0d6efd" : "none"};}}>Tweets</NavLink>
+                <NavLink to="/profile" style={({isActive}) => {return {borderBottom: isActive ? "5px solid #0d6efd" : "none"};}}>Tweets</NavLink>
                 <NavLink to="/profile/with_replies" style={({isActive}) => {return {borderBottom: isActive ? "5px solid #0d6efd" : "none"};}}>Tweets et réponses</NavLink>
                 <NavLink to="/profile/media" style={({isActive}) => {return {borderBottom: isActive ? "5px solid #0d6efd" : "none"};}}>Médias</NavLink>
                 <NavLink to="/profile/likes" style={({isActive}) => {return {borderBottom: isActive ? "5px solid #0d6efd" : "none"};}}>J'aime</NavLink>

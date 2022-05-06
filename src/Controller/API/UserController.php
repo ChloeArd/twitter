@@ -5,8 +5,6 @@ namespace App\Controller\API;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,12 +22,30 @@ class UserController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * @param int $id
+     * @return JsonResponse
+     */
     #[Route('/api/user/{id}', name: 'api_user', methods: ['GET'])]
     public function user(int $id): JsonResponse
     {
-        return $this->json($this->userRepository->find($id));
+        return $this->json($this->userRepository->findBy(["id" =>$id]));
     }
 
+    /**
+     * @param string $google
+     * @return JsonResponse
+     */
+    #[Route('/api/user/google/{google}', name: 'api_user_google/get', methods: ['GET'])]
+    public function userByGoogle(string $google): JsonResponse
+    {
+        return $this->json($this->userRepository->findOneBy(['google' => $google]));
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     #[Route('/api/user/add', name: "api_user_add" ,methods: ['POST'])]
     public function addUser(Request $request): JsonResponse
     {
@@ -68,6 +84,10 @@ class UserController extends AbstractController
         return $this->json("Vous êtes bien inscrit !");
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     #[Route('/api/user/google', name: "api_user_google" ,methods: ['POST'])]
     public function addUserGoogle(Request $request): JsonResponse
     {
@@ -94,6 +114,11 @@ class UserController extends AbstractController
         return $this->json("Vous êtes bien inscrit !");
     }
 
+    /**
+     * @param User $user
+     * @param Request $request
+     * @return JsonResponse
+     */
     #[Route('/api/user/update/{id}', name: 'api_user_update', methods: ['PUT'])]
     public function update(User $user, Request $request): JsonResponse {
 
@@ -107,8 +132,8 @@ class UserController extends AbstractController
     }
 
     /**
-     * @throws OptimisticLockException
-     * @throws ORMException
+     * @param User $user
+     * @return JsonResponse
      */
     #[Route('/api/user/delete/{id}', name: 'api_user_delete', methods: ['DELETE'])]
     public function deleteUser(User $user): JsonResponse
